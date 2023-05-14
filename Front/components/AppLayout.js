@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
+import LoginForm from "./LoginForm";
+import UserProfile from "./UserProfile";
 import Link from 'next/link';
 // react에서는 router를 사용했지만 next에서는 next/link를 사용
 
@@ -8,10 +10,16 @@ import { Menu, Input, Row, Col } from 'antd'; // ant design 사용
 // 모바일 디자인을 먼저 해야 편리하다! 브레이크포인트 설정 편안
 // 가로 먼저 그다음 세로를 나눈다
 
+import styled from 'styled-components';
+
+const SearchInput = styled(Input.Search)`
+verticalAlign : middle;
+width : 250px;
+`
 
 const AppLayout = ({ children }) => {
 
-    const { isLoggedIn, setIsLoggedIn } = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
         <div>
@@ -23,7 +31,7 @@ const AppLayout = ({ children }) => {
                     <Link href="/profile">프로필</Link>
                 </Menu.Item>
                 <Menu.Item>
-                    <Input.Search placeholder="검색할 단어를 입력해주세요" enterButton style={{ verticalAlign: "middle", width: "250px", }} />
+                    <SearchInput placeholder="검색할 단어를 입력해주세요" enterButton />
                 </Menu.Item>
                 <Menu.Item>
                     <Link href="/signup">회원가입</Link>
@@ -35,7 +43,7 @@ const AppLayout = ({ children }) => {
                  *  column 사이에 간격을 두는 옵션 -> gutter 
                  *  target blank -> 새창에서 열기 옵션인데 보안위협이 있어서 rel noreferrer noopener 필수 */}
                 <Col xs={24} md={6}>왼쪽 메뉴
-                    {isLoggedIn ? <UserProfile /> : <LoginForm />}
+                    {isLoggedIn ? <UserProfile setIsLoggedIn={setIsLoggedIn} /> : <LoginForm setIsLoggedIn={setIsLoggedIn} />}
                 </Col>
                 <Col xs={24} md={12}>{children}</Col>
                 <Col xs={24} md={6}> <a href="https://github.com/sh0114" target="_blank" rel="noreferrer noopener">썽히는 공부중 | Made by Sunghee</a></Col>

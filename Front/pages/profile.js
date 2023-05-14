@@ -5,7 +5,11 @@ const Profile = () => {
     return (
         <>
             <Head><title>내 프로필 | StarBird</title></Head>
-            <AppLayout>내프로필 페이지</AppLayout>
+            <AppLayout>
+                <NicknameEditForm />
+                <FollowList header="following list" />
+                <FollowerList header="follower list" />
+            </AppLayout>
         </>
     );
 }
