@@ -11,10 +11,13 @@
   "author": "ChaeSunghee",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "antd": "^5.4.7",
     "next": "^13.2.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.0-rc.1"
   },
   "devDependencies": {
     "eslint": "^8.37.0",
